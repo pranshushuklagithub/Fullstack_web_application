@@ -1,11 +1,15 @@
 import { Box, FormControl, Input,Button, ButtonGroup, Heading } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
+// import axios from "axios";
+import { signupAction } from "../Redux/action";
 
 export default function LoginSignup() {
     const [comp,setComp] = useState("Signup")
     const [signupUser,setSignupUser] = useState({})
     const [loginUser,setLoginUser] = useState({})
     useEffect(()=>{},[comp])
+
+    
 
     return <Box p="4%" alignItems="center">
 
@@ -24,8 +28,8 @@ export default function LoginSignup() {
             <Input type="text" placeholder="Enter Your Name" name="name" onChange={(e)=>{setSignupUser({...signupUser,[e.target.name]:e.target.value})}}/>   
             <Input type="email" placeholder="Enter Your Email" name="email" onChange={(e)=>{setSignupUser({...signupUser,[e.target.name]:e.target.value})}}/>
             <Input type="password" placeholder="Enter Your Password" name="password" onChange={(e)=>{setSignupUser({...signupUser,[e.target.name]:e.target.value})}}/>
-            <Input type="password" placeholder="Confirm Password" name="confirm-password" onChange={(e)=>{setSignupUser({...signupUser,[e.target.name]:e.target.value})}}/>
-            <Button colorScheme="red" mt="2%" w="40%">Signup </Button>
+            <Input type="password" placeholder="Confirm Password" name="confirmPassword" onChange={(e)=>{setSignupUser({...signupUser,[e.target.name]:e.target.value})}}/>
+            <Button colorScheme="red" mt="2%" w="40%" onClick={()=>{signupAction(signupUser)}}>Signup </Button>
         </FormControl>
         }
 

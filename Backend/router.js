@@ -3,15 +3,21 @@ const router = express.Router();
 const {Usermodel} = require("./model")
 
 router.post("/signup",async (req,res)=>{
-    const {name,email,password,confirmPassword} = req.body;
-    console.log(name,email,password,confirmPassword)
 
+   try {  
+    const {name,email,password,confirmPassword} = req.body;
     const user = new Usermodel({
         name,email,password,confirmPassword
     })
     await user.save();
-    res.json({name,email,password,confirmPassword});
-
+    res.send(`Hii ${name} Your Signup is Successfull ! Now Please Login`);
+   } catch (error) {
+    res.send('Something Went Wrong !')
+   }
 })
 
-module.exports = router;
+router.get("/signup",async (req,res)=>{
+    res.send("Signup");
+})
+
+module.exports = {router};
