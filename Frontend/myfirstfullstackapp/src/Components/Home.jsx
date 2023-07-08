@@ -6,6 +6,7 @@ import { getProductAction } from "../Redux/action";
 
 export default function Home (){
     const [token,setToken] =  useState("");
+    
     const dispatch = useDispatch()
 
     const product =  useSelector((state)=>{
@@ -76,7 +77,7 @@ export default function Home (){
         }
     }
     return isLoading?<Heading>Loading....</Heading>:isAuth?<Box >
-        <Heading mt="3%" fontSize="xl">Choose The Best Products From These Live Ads Posted By People Around You.</Heading>
+        <Heading mt="3%" fontSize="xl">Choose The Best Products From These Live Ads Posted By People Around You. Chat With The Publishers.</Heading>
 
         <SimpleGrid gridTemplateColumns="repeat(2,1fr)" w="80%" m="auto"  p="4%" gap="2%">
 

@@ -7,6 +7,7 @@ import AdCard from "./AdCard";
 
 export default function YourAds() {
     const [token,setToken] =  useState("");
+    
     const dispatch = useDispatch()
 
     const liveAds =  useSelector((state)=>{
@@ -24,7 +25,7 @@ export default function YourAds() {
     useEffect(()=>{
         getTokenFromLocal()
         dispatch(getYourAdAction())
-    },[token])
+    },[token,liveAds])
     // console.log(liveAds)
 
     function getTokenFromLocal() {
@@ -32,11 +33,12 @@ export default function YourAds() {
         if(tok!=="") {
             dispatch({type:"LOGIN_SUCCESS"})
             setToken(tok);
+            
         }
     }
 
     return isLoading?<Heading>Loading...</Heading>:isAuth?<Box>
-        <Heading mt="3%" fontSize="xl">Your Ads are live here,You can edit or remove the products.</Heading>
+        <Heading mt="5%" fontSize="xl">{liveAds.length>0?"Your Ads are live here,You can edit or remove the products.":"Currently There Is No Ad Published By You."}</Heading>
         {
             liveAds.map((e,i)=>{
                 return <AdCard key={i} title={e.title} image={e.image} price={e.price}description={e.description} id={e._id}/>

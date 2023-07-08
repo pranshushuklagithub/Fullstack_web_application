@@ -36,7 +36,7 @@ export default function Navbar(){
     }
 
     return <Box bg="MenuText" alignItems="center">
-        <Flex className="Navbar" p="1%" justifyContent="space-between" m="auto" alignItems="center">
+        <Flex className="Navbar" p="1%"   justifyContent="space-between" m="auto" alignItems="center" >
 
         
         <Heading ml="5%" color="red">OLX-<span style={{color:"tomato"}}>LITE</span></Heading>

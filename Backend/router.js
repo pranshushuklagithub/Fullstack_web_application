@@ -19,12 +19,14 @@ router.post("/signup",async (req,res)=>{
 router.post("/login",async (req,res)=>{
     try {  
         const {email,password} = req.body;
-        const user = await Usermodel.find({email:email,password:password});
+        const user = await Usermodel.findOne({email,password});
         
-        // console.log(user[0].name)
+        
         const token = "secret123"
 
-        res.send({response:`Hii ${user[0].name} You're Logged in !`,token:token,name:user[0].name,userId:user[0]._id});
+        // console.log(user)
+
+        res.send({response:`Hii ${user.name} You're Logged in !`,token:token,name:user.name,userId:user._id});
        } catch (error) {
         res.send('Something Went Wrong !')
        }
