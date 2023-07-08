@@ -59,7 +59,7 @@ export default function Navbar(){
                 dispatch(logoutAction())
                 setToken("")
                 navigate("/loginSignup")
-            }} colorScheme="red">Logout</Button>:<Link to="/loginSignup"><Button>Login or Signup</Button></Link>}
+            }} colorScheme="red">Logout</Button>:<Link to="/loginSignup"><Button colorScheme="green">Login or Signup</Button></Link>}
 
             
             
