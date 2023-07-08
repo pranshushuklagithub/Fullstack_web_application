@@ -1,11 +1,11 @@
 import './App.css';
-import { Heading } from '@chakra-ui/react';
-import LoginSignup from './Components/Login-Signup';
+import Navbar from './Components/Navbar';
+import Allroute from './Components/Allroutes/Allroutes';
 function App() {
   return (
     <div className="App">
-      <Heading>Hey There Welcome! Please Login or Signup First.</Heading>
-      <LoginSignup/>
+      <Navbar/>
+      <Allroute/>
     </div>
   );
 }
