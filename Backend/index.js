@@ -12,7 +12,7 @@ app.use(cors()) ;
 app.use("/user",router)
 app.use("/product",productRouter)
 
-const Port = 8000;
+const Port = 8080;
 
 
 
