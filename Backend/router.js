@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {Usermodel} = require("./model")
+require("dotenv").config();
 
 router.post("/signup",async (req,res)=>{
 
@@ -22,7 +23,7 @@ router.post("/login",async (req,res)=>{
         const user = await Usermodel.findOne({email,password});
         
         
-        const token = "secret123"
+        const token = process.env.SECRET_KEY 
 
         // console.log(user)
 
