@@ -28,7 +28,7 @@ export default function Navbar(){
 
     function getTokenFromLocal() {
         const tok = localStorage.getItem("login-token")||""
-        if(tok!=="") {
+        if(tok!=="" || tok!==undefined) {
             dispatch({type:"LOGIN_SUCCESS"})
             // setUserId(localStorage.getItem("login-userId"))
             setToken(tok);

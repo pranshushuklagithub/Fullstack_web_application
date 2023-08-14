@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { signupAction } from "../Redux/action";
 import { loginAction } from "../Redux/action";
 import { useNavigate } from "react-router-dom"
-import { useSelector,useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 
 
 export default function LoginSignup() {

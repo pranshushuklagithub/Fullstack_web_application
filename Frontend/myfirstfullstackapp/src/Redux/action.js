@@ -10,16 +10,20 @@ export const loginAction = ({email,password})=>{
     return (dispatch)=>{
         // dispatch({type:"LOADING",payload:true})
         // console.log(email,password)
-        axios.post("http://localhost:8000/user/login",{email,password})
+        axios.post("https://apricot-binturong-yoke.cyclic.app/user/login",{email,password})
         .then((res)=>{
-        console.log(res.data.token,res.data.name);
-        dispatch({type:"LOGIN_SUCCESS"})
-        alert(res.data.response)
-        localStorage.setItem("login-token",res.data.token)
-        localStorage.setItem("login-name",res.data.name)
-        localStorage.setItem("login-userId",res.data.userId)
+        // console.log(res.data.message);
+        if(res.data.response===undefined) {
+            alert(res.data.message)
+        }else {
+            dispatch({type:"LOGIN_SUCCESS"})
+            alert(res.data.response)
+            localStorage.setItem("login-token",res.data.token)
+            localStorage.setItem("login-name",res.data.name)
+            localStorage.setItem("login-userId",res.data.userId)
+        }
         }).catch((error)=>{
-        console.log("error")
+        console.log(error)
         dispatch({type:"ERROR"})
         })
         // dispatch({type:"LOADING",payload:false})
@@ -39,7 +43,7 @@ export const signupAction = ({name,email,password,confirmPassword})=>{
     
     // console.log(name,email,password,confirmPassword)
 
-    axios.post("http://localhost:8000/user/signup",{name,email,password,confirmPassword})
+    axios.post("https://apricot-binturong-yoke.cyclic.app/user/signup",{name,email,password,confirmPassword})
     .then((res)=>{
         console.log(res);
         alert(res.data)
@@ -51,7 +55,7 @@ export const signupAction = ({name,email,password,confirmPassword})=>{
 export const getProductAction = ({type,sort})=>{
     return (dispatch)=>{
         dispatch({type:"LOADING",payload:true})
-        axios.get("http://localhost:8000/product")
+        axios.get("https://apricot-binturong-yoke.cyclic.app/product")
         .then((res)=>{
             // console.log(res.data);
             dispatch({type:"PRODUCT_SUCCESS",payload:res.data})
@@ -72,15 +76,15 @@ export const postProductAction = ({title,image,description,price,category})=>{
     return(dispatch)=>{
         console.log({name,title,image,description,price,category,userId})
         
-        axios.post(`http://localhost:8000/product`,{name,title,image,description,price,category,userId})
+        axios.post(`https://apricot-binturong-yoke.cyclic.app/product`,{name,title,image,description,price,category,userId})
         
         .then((res)=>{
-            console.log(res);
+            // console.log(res);
             alert(res.data)
             dispatch({type:"LOADING",payload:true})
-            axios.get("http://localhost:8000/product")
+            axios.get("https://apricot-binturong-yoke.cyclic.app/product")
             .then((res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 dispatch({type:"PRODUCT_SUCCESS",payload:res.data})
             }).catch((error)=>{
                 console.log(error)
@@ -99,7 +103,7 @@ export const getYourAdAction = ()=>{
     return (dispatch)=>{
         // console.log(userId)
         dispatch({type:"LOADING",payload:true})
-        axios.get(`http://localhost:8000/product/${userId}`)
+        axios.get(`https://apricot-binturong-yoke.cyclic.app/product/${userId}`)
         .then((res)=>{
             // console.log(res.data);
             dispatch({type:"AD_SUCCESS",payload:res.data})
@@ -119,13 +123,13 @@ export const updateYourAdAction = ({title,image,description,price,category},id)=
     return(dispatch)=>{
         // console.log(id,{name,title,image,description,price,category,userId})
         
-        axios.put(`http://localhost:8000/product/${id}`,{name,title,image,description,price,category,userId})
+        axios.put(`https://apricot-binturong-yoke.cyclic.app/product/${id}`,{name,title,image,description,price,category,userId})
         
         .then((res)=>{
-            console.log(res);
+            // console.log(res);
             alert(res.data)
             dispatch({type:"LOADING",payload:true})
-            axios.get("http://localhost:8000/product")
+            axios.get("https://apricot-binturong-yoke.cyclic.app/product")
             .then((res)=>{
                 console.log(res.data);
                 dispatch({type:"PRODUCT_SUCCESS",payload:res.data})
@@ -146,16 +150,16 @@ export const deleteYourAdAction = (id)=>{
     
 
     return(dispatch)=>{
-        console.log(id)
+        // console.log(id)
         
-        axios.delete(`http://localhost:8000/product/${id}`)
+        axios.delete(`https://apricot-binturong-yoke.cyclic.app/product/${id}`)
         .then((res)=>{
-            console.log(res);
+            // console.log(res);
             alert(res.data)
             dispatch({type:"LOADING",payload:true})
-            axios.get("http://localhost:8000/product")
+            axios.get("https://apricot-binturong-yoke.cyclic.app/product")
             .then((res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 dispatch({type:"PRODUCT_SUCCESS",payload:res.data})
             }).catch((error)=>{
                 console.log(error)
